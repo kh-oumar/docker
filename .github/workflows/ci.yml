@@ -12,17 +12,16 @@ on:
 
 jobs:
   tests:
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
     strategy: 
       matrix:
         node-version: [18.x]
     steps:
       - uses: actions/checkout@v3
-      - name: Use NodeJS ${{ mastrix.node-version }} 
+      - name: Use NodeJS ${{ matrix.node-version }} 
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ mastrix.node-version }} 
+          node-version: ${{ matrix.node-version }} 
           cache: npm
       - run npm i
       - run npm test
-      
